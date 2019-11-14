@@ -3,14 +3,14 @@ import axios from "axios";
 
 import "./App.scss";
 
+const APIUrl = "http://localhost:5000/api/teaser/query?page=";
+const Query =
+  "https://hypebeast.com/2019/11/martin-wong-supreme-fw19-collection-info";
+
 function App() {
   const [data, setData] = useState({ hits: [] });
-  const [query, setQuery] = useState(
-    "millie-bobby-brown-converse-collection-release-date-price"
-  );
-  const [url, setUrl] = useState(
-    "https://teaser-fetch-api.herokuapp.com/api/teaser/millie-bobby-brown-converse-collection-release-date-price"
-  );
+  const [query, setQuery] = useState(Query);
+  const [url, setUrl] = useState(`${APIUrl}${Query}`);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -36,12 +36,15 @@ function App() {
     <div className="App">
       {/* {JSON.stringify(data)} */}
       <div className="form">
-        <h1>Enter a Slug</h1>
+        <h1>
+          <span role="img" aria-label="Magic Emoji">
+            ✨
+          </span>
+          Magic Teaser Fetcher
+        </h1>
         <form
           onSubmit={e => {
-            setUrl(
-              `https://teaser-fetch-api.herokuapp.com/api/teaser/${query}`
-            );
+            setUrl(`${APIUrl}${query}`);
             e.preventDefault();
           }}
         >

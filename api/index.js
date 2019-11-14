@@ -7,7 +7,6 @@ const logger = require("./middleware/logger");
 
 const app = express();
 app.use(cors());
-const PORT = process.env.PORT || 5000;
 
 //Init middleware
 // app.use(logger);
@@ -35,5 +34,7 @@ app.get("/", (req, res) => {
 
 // Scrap Teaser API Route
 app.use("/api/teaser", require("./routes/api/teaser"));
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
